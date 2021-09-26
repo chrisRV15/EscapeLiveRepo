@@ -6,7 +6,8 @@ public class Controller : MonoBehaviour
 {
     public float speed = 10f;
     public CharacterController movement;
-
+    public int keys = 0;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -23,4 +24,9 @@ public class Controller : MonoBehaviour
 
         movement.Move(move * speed * Time.deltaTime);
     }
+
+    
+
+    
+
 }
