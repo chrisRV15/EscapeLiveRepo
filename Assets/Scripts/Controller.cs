@@ -8,10 +8,11 @@ public class Controller : MonoBehaviour
     public CharacterController movement;
     public int keys = 0;
     
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -21,6 +22,7 @@ public class Controller : MonoBehaviour
         float z = Input.GetAxis("Vertical");
 
         Vector3 move = transform.right * x + transform.forward * z;
+
 
         movement.Move(move * speed * Time.deltaTime);
     }

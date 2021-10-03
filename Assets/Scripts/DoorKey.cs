@@ -23,6 +23,7 @@ public class DoorKey : MonoBehaviour
         {
             hasKey = true;
             gameObject.SetActive(false);
+            
         }
     }
 }
