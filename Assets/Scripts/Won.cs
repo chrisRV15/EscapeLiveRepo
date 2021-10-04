@@ -1,30 +1,34 @@
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
-public class DoorKey : MonoBehaviour
+public class Won : MonoBehaviour
 {
-    public bool hasKey = false;
-
     // Start is called before the first frame update
     void Awake()
     {
-       
+
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.name == "Finish") 
         {
-            hasKey = true;
-            gameObject.SetActive(false);
-            
+            setTimer(0);
         }
+
     }
+
+    void setTimer(int time)
+    {
+        Timer playerTimer = this.GetComponent<Timer>();
+        playerTimer.startTimer = time;
+    }
+
 }
