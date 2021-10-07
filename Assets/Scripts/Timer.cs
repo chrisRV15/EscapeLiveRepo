@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class Timer : MonoBehaviour
 {
     public Text timer;
+    public GameObject losePanel;
     private float timep;
-    private float sec;
-    private float min;
+    public int countDown = 120;
     public float startTimer;
     
 
@@ -16,19 +17,32 @@ public class Timer : MonoBehaviour
     void Start()
     {
         startTimer = 1;
+        downTimer();
+        losePanel.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+       
+    }
+
+    void downTimer()
+    {
         if (startTimer > 0)
         {
-            timep += Time.deltaTime;
-            min = (int)(timep / 60);
-            sec = (timep % 60);
-
-
-            timer.text = min.ToString("00") + ":" + sec.ToString("f2");
+            if (countDown > 0)
+            {
+                TimeSpan spanTime = TimeSpan.FromSeconds(countDown);
+                timer.text = "   " + spanTime.Minutes + " : " + spanTime.Seconds;
+                countDown--;
+                Invoke("downTimer", 1.0f);
+            }
+            else
+            {
+                losePanel.SetActive(true);
+                Cursor.lockState = CursorLockMode.Confined;
+            }
         }
     }
    

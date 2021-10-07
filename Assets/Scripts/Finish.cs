@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class Finish : MonoBehaviour
 {
-    public GameObject creditsPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -24,13 +23,9 @@ public class Finish : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            creditsPanel.SetActive(true);
-           
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
         }
     }
-
-    public void Quit()
-    {
-        SceneManager.LoadScene("Menu");
-    }
+  
 }
